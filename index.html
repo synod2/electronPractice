@@ -3,17 +3,72 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
     <title>Hello World!</title>
+    <link rel="stylesheet" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+    
+    <script src="./node_modules/vue/dist/vue.js"></script>
+
   </head>
   <body>
-    <h1>Hello World!</h1>
+
+
+    <h1>!!!Hello World!</h1>
     We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>.
 
     <!-- You can also require other files to run in this process -->
+    <br/><a class = "btn btn-info">Bootstrap TEST BTN</a>
+
+    <div id ="app"> 
+      {{ message }}
+    </div>
+
+    <div id ="app-2">
+      <span v-bind:title="message">
+        on mouse over here
+      </span>
+    </div>
+
+    <div id ="app-3">
+      <p v-if="see">now you can see me </p>
+    </div>
+
+    <div id = "app-4">
+      <ol>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ol>
+    </div>
+
+    <div id = "app-5">
+      <p> {{message}} </p>
+      <button v-on:click="reverseMessage">Reverse this message </button>
+    </div>
+
+    <div id='app-6'>
+      <p>{{ message }} </p>
+      <input v-model = "message">
+    </div>
+    <div id='app-7'>
+      <ol>
+        <!-- make instances of todo-item component -->
+        <todo-item
+          v-for = "item in Glist"
+          v-bind:todo ="item"
+          v-bind:key = "item.id"
+        >        
+        </todo-item
+        >
+
+      </ol>
+    </div>
+
+
     <script src="./renderer.js"></script>
+
   </body>
 </html>
